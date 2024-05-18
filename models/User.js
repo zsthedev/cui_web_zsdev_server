@@ -34,11 +34,40 @@ const schema = new mongoose.Schema({
     unique: true,
   },
 
+  status: {
+    type: String,
+    default: "not_verified",
+  },
+
   password: {
     type: String,
     required: true,
     minLength: [6, "Password must be at least 6 characters"],
   },
+
+  followers: [
+    {
+      user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    },
+  ],
+  following: [
+    {
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    },
+  ],
+
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post"
+    },
+  ],
 
   createdAt: {
     type: Date,

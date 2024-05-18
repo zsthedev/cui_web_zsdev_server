@@ -32,9 +32,13 @@ import cookieParser from "cookie-parser";
 app.use(cookieParser());
 
 import authRouter from "./routes/authRouter.js";
+import postsRouter from "./routes/postRoutes.js";
+
 
 
 app.use("/api/v1", authRouter);
+app.use("/api/v1", postsRouter);
+
 
 
 app.get("/", (req, res) => {
